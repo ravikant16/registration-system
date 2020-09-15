@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Dashboard</a>
+  <a class="navbar-brand" href="#">Registration Form</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -28,7 +28,7 @@
       </li> -->
     </ul>
     <div class="pull-right">
-      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+      <a class="btn btn-outline-danger my-2 my-sm-0" href="<?=base_url('auth/logout');?>">Logout</a>
     </div>
   </div>
 </nav>

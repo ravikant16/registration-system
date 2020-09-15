@@ -15,7 +15,7 @@
 */
 
 // Account Creation
-$lang['account_creation_successful']            = 'Account Successfully Created';
+$lang['account_creation_successful']            = 'Account successfully created. Please login with your email id and password';
 $lang['account_creation_unsuccessful']          = 'Unable to Create Account';
 $lang['account_creation_duplicate_email']       = 'Email Already Used or Invalid';
 $lang['account_creation_duplicate_identity']    = 'Identity Already Used or Invalid';

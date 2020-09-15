@@ -1,15 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2020 at 05:39 AM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.2
+-- Generation Time: Sep 15, 2020 at 03:12 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.3.17
 
 SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -41,7 +40,7 @@ CREATE TABLE `groups` (
 
 INSERT INTO `groups` (`id`, `name`, `description`) VALUES
 (1, 'admin', 'Administrator'),
-(2, 'members', 'General User');
+(2, 'users', 'General User');
 
 -- --------------------------------------------------------
 
@@ -90,7 +89,10 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
 (1, '127.0.0.1', 'administrator', '$2y$12$1hrYzlIVdeU5XIX9SswpjeMOSu37BuPj7GHdDoQSq5PrKVqi1kOE6', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1600102674, 1, 'Admin', 'istrator', 'ADMIN', '0'),
-(2, '::1', NULL, '$2y$10$iQQWc6Rhufeo3ctyxgTYreNqgp5Uwe2eNunpOzl6OVPQczLykS5wq', 'ravidewangan13@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1600102976, 1600106223, 1, 'ravikant', 'dewanan', '', '8817721954');
+(2, '::1', NULL, '$2y$10$iQQWc6Rhufeo3ctyxgTYreNqgp5Uwe2eNunpOzl6OVPQczLykS5wq', 'ravidewangan13@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1600102976, 1600174402, 1, 'ravikant', 'dewanan', '', '8817721954'),
+(3, '::1', NULL, '$2y$10$wG1jv8FAjeftNZCsg94oGOo3ysCV/XtI5dDi5WI7oQ13CBilyL21G', 'ravi16dewangan@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1600165651, NULL, 1, NULL, NULL, NULL, '8817721954'),
+(4, '::1', NULL, '$2y$10$SYXB2r..3iNKDV/dvbpDe.x86u5mtZ1SZi56ZZxP3rNhr8x3xQbuO', 'ravi@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1600165725, NULL, 1, NULL, NULL, NULL, '8817721954'),
+(5, '::1', NULL, '$2y$10$6K7KMwZ3DnRDIiQq4CCVIuD/MkiiQ5kL1Jxu8WMPqnn4r2GvgvL/W', 'rd@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1600166109, NULL, 1, NULL, NULL, NULL, '8817721954');
 
 -- --------------------------------------------------------
 
@@ -111,7 +113,54 @@ CREATE TABLE `users_groups` (
 INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 (1, 1, 1),
 (2, 1, 2),
-(3, 2, 2);
+(3, 2, 2),
+(4, 3, 2),
+(5, 4, 2),
+(6, 5, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_data`
+--
+
+CREATE TABLE `user_data` (
+  `id` int(11) NOT NULL,
+  `registration_no` varchar(20) NOT NULL,
+  `first_name` varchar(150) NOT NULL,
+  `last_name` varchar(150) NOT NULL,
+  `image_name` varchar(150) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `mobile_no` varchar(15) NOT NULL,
+  `attr_mobile_no` varchar(15) DEFAULT NULL,
+  `dob` date NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `aadhaar_no` varchar(12) NOT NULL,
+  `category` varchar(10) NOT NULL,
+  `father_name` varchar(200) NOT NULL,
+  `mother_name` varchar(200) NOT NULL,
+  `address` text NOT NULL,
+  `city` varchar(150) NOT NULL,
+  `state` varchar(150) NOT NULL,
+  `pin_code` int(11) NOT NULL,
+  `profession` varchar(255) NOT NULL,
+  `employee` varchar(255) NOT NULL,
+  `education` varchar(255) NOT NULL,
+  `govt_issued_id` varchar(20) NOT NULL,
+  `govt_identity` varchar(150) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `updated_by` int(11) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_data`
+--
+
+INSERT INTO `user_data` (`id`, `registration_no`, `first_name`, `last_name`, `image_name`, `email`, `mobile_no`, `attr_mobile_no`, `dob`, `gender`, `aadhaar_no`, `category`, `father_name`, `mother_name`, `address`, `city`, `state`, `pin_code`, `profession`, `employee`, `education`, `govt_issued_id`, `govt_identity`, `created_at`, `created_by`, `updated_at`, `updated_by`, `status`) VALUES
+(4, '2020150902', 'ravikant', 'dewangan', 'assets/images/student_profile/2/2_1600169660.jpeg', 'ravidewangan13@gmail.com', '8817721954', '', '2020-09-15', 'Male', '333333333335', 'SC', 'Ramesh Dewangan', 'Kirtan Dewangan', 'takhatpur', 'takhatpur', 'chhattisgarh', 495330, 'sfsfs', 'krinteffs sfs l', 'sffsfsfs', 'voter_id', 'assets/images/student_profile/2/2_1600169657.jpeg', '0000-00-00 00:00:00', 0, NULL, NULL, 1);
 
 --
 -- Indexes for dumped tables
@@ -149,6 +198,14 @@ ALTER TABLE `users_groups`
   ADD KEY `fk_users_groups_groups1_idx` (`group_id`);
 
 --
+-- Indexes for table `user_data`
+--
+ALTER TABLE `user_data`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `registration_no` (`registration_no`),
+  ADD KEY `id` (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -168,13 +225,19 @@ ALTER TABLE `login_attempts`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `user_data`
+--
+ALTER TABLE `user_data`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
